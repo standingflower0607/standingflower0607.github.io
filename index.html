@@ -1,49 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
     <title>Kan Tachibana's portfolio</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <div id="app">
+      <div class="container-fluid text-center">
+        <div
+          class="sidenav text-left d-none d-lg-block"
+          v-if="scrollY > Math.round(windowHeight/2)"
+        >
+          <a href="#profile" class="hanko-font">PROFILE</a>
+          <a href="#skills" class="hanko-font">SKILLS</a>
+          <a href="#works" class="hanko-font">WORKS</a>
+          <a href="#experience" class="hanko-font">EXPERIENCE</a>
+          <a href="#blog" class="hanko-font">BLOG</a>
+          <a href="#contact" class="hanko-font">CONTACT</a>
+          <a href="#" class="hanko-font"></a>
+          <a href="#" class="hanko-font"></a>
+        </div>
 
-
-    <div class="container-fluid">
-
-        <div class="row text-center">
+        <div class="container">
+          <div v-bind:style="{height: windowHeightPx}" class="top">
+            <div class="hanko-font" id="my-name">Kan<br />Tachibana</div>
+          </div>
+          <p>{{ scrollY }}</p>
+          <p class="hanko-font section-title">PROFILE</p>
+          <div id="profile" class="row text-center">
             <div class="col-12">
-                <h3 id="my-name">Kan Tachibana</h3>
+              <div id="me"><img src="./img/ore_zentai.png" alt="" /></div>
+              <p>立花 冠 | Kan Tachibana</p>
+
+              <div class="sns">
+                <a href=""><i class="fab fa-twitter fa-2x fa-fw"></i></a>
+                <a href=""><i class="fab fa-instagram fa-2x fa-fw"></i></a>
+                <a href=""><i class="fab fa-github fa-2x fa-fw"></i></a>
+              </div>
+              <p>ロボットからWebまで、モノづくりが好きな高校生</p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12"></div>
-        </div>
-        <div class="row">
-            <div class="col-12"></div>
-        </div>
-        <div class="row">
-            <div class="col-12"></div>
-        </div>
+          </div>
 
+          <p class="hanko-font section-title">SKILLS</p>
+          <div id="skills" class="row">
+            <div class="col-12">
+              <div class="content text-left">
+                <h4>Languages</h4>
+                <p class="mb-1">HTML / CSS</p>
+                <p>このサイトが作れるくらい。</p>
+                <p class="mb-1">Python</p>
+                <p>
+                  はじめて、さわった言語。RasphberryPiでロボット作ったり、PandasとかNumpy,Matplotlibらへん分かる。Djangoも少し。
+                </p>
+                <p class="mb-1">JavaScript</p>
+                <p>インターンで使ってる言語。Vue.jsとかもやってる。</p>
 
+                <h4>Tools</h4>
+                <p>Git, VScode, Adobe Premiere, After Effects, Photoshop</p>
+              </div>
+            </div>
+          </div>
+          <p class="hanko-font section-title">WORKS</p>
+          <div id="works" class="row">
+            <div class="col-6">comming soon...</div>
+            <div class="col-6">comming soon...</div>
+          </div>
+          <div class="row">
+            <div class="col-6">comming soon...</div>
+            <div class="col-6">comming soon...</div>
+          </div>
+          <p class="hanko-font section-title">EXPERIENCE</p>
+          <div id="experience" class="row">
+            <div class="col-12">
+              <p>Comming Soon..</p>
+            </div>
+          </div>
+          <div id="blog" class="row">
+            <div class="col-12">
+              <p class="hanko-font section-title">BLOG</p>
+              <a href="https://www.banakan.com/">バナナの缶詰</a>
+            </div>
+          </div>
+          <p class="hanko-font section-title">CONTACT</p>
+          <div id="contact" class="row">
+            <div class="col-12 ">
+              <i class="far fa-envelope fa-5x fa-fw"></i>
+              <p>tachibanaa1211@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <h1>Hello World</h1>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-</body>
-
+    <footer class="pt-4 text-center">
+      <p>COPYRIGHT &#169; Kan Tachibana's Portfolio ALL RIGHTS RESERVED.</p>
+    </footer>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          windowHeight: window.innerHeight,
+          windowHeightPx: window.innerHeight + "px",
+          scrollY: 0
+        },
+        mounted() {
+          window.addEventListener("resize", this.calculateWindowHeight);
+          console.log("add");
+          window.addEventListener("scroll", this.handleScroll);
+        },
+        beforeDestroy() {
+          window.removeEventListener("resize", this.calculateWindowHeight);
+          console.log("remove");
+        },
+        methods: {
+          calculateWindowHeight() {
+            this.windowHeight = window.innerHeight;
+            console.log(this.windowHeight);
+          },
+          handleScroll() {
+            this.scrollY = window.scrollY;
+          }
+        }
+      });
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
