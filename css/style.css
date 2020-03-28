@@ -1,10 +1,114 @@
-
+@font-face {
+  font-family: "hanko-font";
+  src: url("../fonts/HANKO___.TTF");
+}
 
 @font-face {
-  font-family: 'myfont';
-  src: local('../fonts/HANKO___.TTF');
-  
+  font-family: "dinosaur-font";
+  src: url("../fonts/KR Nicky's Dinos.ttf");
 }
-#my-name{
- font-family: myfont;
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer {
+  background-color: #818181;
+}
+
+#me {
+  height: 200px;
+}
+
+#me img {
+  height: 100%;
+  width: auto;
+}
+
+.content {
+  padding: 1rem;
+  background-color: #fffaf0;
+  margin: 0 auto;
+}
+#my-name {
+  font-family: hanko-font;
+  font-size: 5rem;
+}
+
+.dinosaur-font {
+  font-family: dinosaur-font;
+}
+
+.hanko-font {
+  font-family: hanko-font;
+}
+.section-title {
+  font-size: 3rem;
+}
+
+.sidenav {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.balloon4 {
+  position: relative;
+  margin: 2em 0 2em 40px;
+  padding: 15px;
+  background: #fff0c6;
+  border-radius: 30px;
+}
+
+.balloon4:before {
+  content: "";
+  position: absolute;
+  left: -38px;
+  width: 13px;
+  height: 12px;
+  bottom: 0;
+  background: #fff0c6;
+  border-radius: 50%;
+}
+
+.balloon4:after {
+  content: "";
+  position: absolute;
+  left: -24px;
+  width: 20px;
+  height: 18px;
+  bottom: 3px;
+  background: #fff0c6;
+  border-radius: 50%;
+}
+.balloon4 p {
+  margin: 0;
+  padding: 0;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
