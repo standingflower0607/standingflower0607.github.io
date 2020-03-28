@@ -1,0 +1,10 @@
+
+
+@font-face {
+  font-family: 'myfont';
+  src: local('../fonts/HANKO___.TTF');
+  
+}
+#my-name{
+ font-family: myfont;
+}
