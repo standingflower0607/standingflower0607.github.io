@@ -15,6 +15,11 @@
       href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
       rel="stylesheet"
     />
+    <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+    />
     <title>Kan Tachibana's portfolio</title>
   </head>
 
@@ -31,7 +36,7 @@
           <a href="#experience" class="hanko-font">EXPERIENCE</a>
           <a href="#blog" class="hanko-font">BLOG</a>
           <a href="#contact" class="hanko-font">CONTACT</a>
-          <a href="#" class="hanko-font"></a>
+          <a href="#github" class="hanko-font">GITHUB</a>
           <a href="#" class="hanko-font"></a>
         </div>
 
@@ -102,13 +107,24 @@
               <p>tachibanaa1211@gmail.com</p>
             </div>
           </div>
+
+          <p class="hanko-font section-title">GITHUB</p>
+          <div id="github" class="row mb-5">
+            <div class="col-12 ">
+              <!-- Prepare a container for your calendar. -->
+              <div class="calendar">
+                <!-- Loading stuff -->
+                Loading the data just for you.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <footer class="py-4 text-center">
+        <p>COPYRIGHT &#169; Kan Tachibana's Portfolio ALL RIGHTS RESERVED.</p>
+      </footer>
     </div>
 
-    <footer class="pt-4 text-center">
-      <p>COPYRIGHT &#169; Kan Tachibana's Portfolio ALL RIGHTS RESERVED.</p>
-    </footer>
     <script>
       new Vue({
         el: "#app",
@@ -136,6 +152,13 @@
           }
         }
       });
+    </script>
+
+    <!-- Include the library. -->
+    <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+
+    <script>
+      GitHubCalendar(".calendar", "standingflower0607", { responsive: true });
     </script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
