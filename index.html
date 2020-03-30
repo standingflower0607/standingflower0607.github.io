@@ -1,156 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-    <link
-      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-      rel="stylesheet"
-    />
-    <title>Kan Tachibana's portfolio</title>
-  </head>
 
-  <body>
-    <div id="app">
-      <div class="container-fluid text-center">
-        <div
-          class="sidenav text-left d-none d-lg-block"
-          v-if="scrollY > Math.round(windowHeight/2)"
-        >
-          <a href="#profile" class="hanko-font">PROFILE</a>
-          <a href="#skills" class="hanko-font">SKILLS</a>
-          <a href="#works" class="hanko-font">WORKS</a>
-          <a href="#experience" class="hanko-font">EXPERIENCE</a>
-          <a href="#blog" class="hanko-font">BLOG</a>
-          <a href="#contact" class="hanko-font">CONTACT</a>
-          <a href="#" class="hanko-font"></a>
-          <a href="#" class="hanko-font"></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script src="me_canvas.js"></script>
+
+
+  <script>
+    // Global Scripts
+    var smile = false;
+    var surprise = false;
+    var normal = true;</script>
+  <script>
+    var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+    function init() {
+      canvas = document.getElementById("canvas");
+      anim_container = document.getElementById("animation_container");
+      dom_overlay_container = document.getElementById("dom_overlay_container");
+      var comp = AdobeAn.getComposition("191F5F9BB917814D964F81865ED2CBEA");
+      var lib = comp.getLibrary();
+      var loader = new createjs.LoadQueue(false);
+      loader.addEventListener("fileload", function (evt) { handleFileLoad(evt, comp) });
+      loader.addEventListener("complete", function (evt) { handleComplete(evt, comp) });
+      var lib = comp.getLibrary();
+      loader.loadManifest(lib.properties.manifest);
+    }
+    function handleFileLoad(evt, comp) {
+      var images = comp.getImages();
+      if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }
+    }
+    function handleComplete(evt, comp) {
+      //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+      var lib = comp.getLibrary();
+      var ss = comp.getSpriteSheet();
+      var queue = evt.target;
+      var ssMetadata = lib.ssMetadata;
+      for (i = 0; i < ssMetadata.length; i++) {
+        ss[ssMetadata[i].name] = new createjs.SpriteSheet({ "images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames })
+      }
+      exportRoot = new lib.abater();
+      stage = new lib.Stage(canvas);
+      //Registers the "tick" event listener.
+      fnStartAnimation = function () {
+        stage.addChild(exportRoot);
+        createjs.Ticker.framerate = lib.properties.fps;
+        createjs.Ticker.addEventListener("tick", stage);
+      }
+      //Code to support hidpi screens and responsive scaling.
+      AdobeAn.makeResponsive(true, 'both', false, 1, [canvas, anim_container, dom_overlay_container]);
+      AdobeAn.compositionLoaded(lib.properties.id);
+      fnStartAnimation();
+    }
+  </script>
+
+  <title>Kan Tachibana's portfolio</title>
+</head>
+
+<body onload="init()">
+  <div id="app">
+    <div class="container-fluid text-center">
+      <div class="sidenav text-left d-none d-xl-block" v-if="scrollY > Math.round(windowHeight/2)">
+        <a href="#profile" class="hanko-font">PROFILE</a>
+        <a href="#skills" class="hanko-font">SKILLS</a>
+        <a href="#works" class="hanko-font">WORKS</a>
+        <a href="#experience" class="hanko-font">EXPERIENCE</a>
+        <a href="#blog" class="hanko-font">BLOG</a>
+        <a href="#contact" class="hanko-font">CONTACT</a>
+        <a href="#github" class="hanko-font">GITHUB</a>
+        <a href="#" class="hanko-font"></a>
+      </div>
+
+      <div class="container">
+        <div v-bind:style="{height: windowHeightPx}" class="top">
+          <div class="hanko-font" id="my-name">Kan<br />Tachibana</div>
         </div>
+        <p>{{ scrollY }}</p>
 
-        <div class="container">
-          <div v-bind:style="{height: windowHeightPx}" class="top">
-            <div class="hanko-font" id="my-name">Kan<br />Tachibana</div>
-          </div>
-          <p>{{ scrollY }}</p>
+        <div id="profile">
           <p class="hanko-font section-title">PROFILE</p>
-          <div id="profile" class="row text-center">
+          <div class="row text-center">
             <div class="col-12">
-              <div id="me"><img src="./img/ore_zentai.png" alt="" /></div>
+              <div id="me">
+                <div id="animation_container"
+                  style="background-color:rgba(255, 255, 255, 0.00); width:700px; height:400px">
+                  <canvas id="canvas" width="700" height="400"
+                    style="position: absolute; display: block; background-color:rgba(255, 255, 255, 0.00);"></canvas>
+                  <div id="dom_overlay_container"
+                    style="pointer-events:none; overflow:hidden; width:700px; height:400px; position: absolute; left: 0px; top: 0px; display: block;">
+                  </div>
+                </div>
+              </div>
+
+
+
               <p>立花 冠 | Kan Tachibana</p>
 
+
+              <p>ロボットからWebまで、モノづくりが好きな高校生</p>
               <div class="sns">
                 <a href=""><i class="fab fa-twitter fa-2x fa-fw"></i></a>
                 <a href=""><i class="fab fa-instagram fa-2x fa-fw"></i></a>
                 <a href=""><i class="fab fa-github fa-2x fa-fw"></i></a>
               </div>
-              <p>ロボットからWebまで、モノづくりが好きな高校生</p>
             </div>
           </div>
+        </div>
 
+
+
+
+        <div id="skills">
           <p class="hanko-font section-title">SKILLS</p>
-          <div id="skills" class="row">
-            <div class="col-12">
-              <div class="content text-left">
-                <h4>Languages</h4>
-                <p class="mb-1">HTML / CSS</p>
+          <div　class="row">
+            <div class=" col-lg-6 d-flex">
+              <div class="skill-col">
+                <span class="skill-title">HTML / CSS</span>
                 <p>このサイトが作れるくらい。</p>
-                <p class="mb-1">Python</p>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex">
+              <div class="skill-col">
+                <span class="skill-title">Python</span>
                 <p>
                   はじめて、さわった言語。RasphberryPiでロボット作ったり、PandasとかNumpy,Matplotlibらへん分かる。Djangoも少し。
                 </p>
-                <p class="mb-1">JavaScript</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 d-flex">
+              <div class="skill-col">
+                <span class="skill-title">JavaScript</span>
                 <p>インターンで使ってる言語。Vue.jsとかもやってる。</p>
-
-                <h4>Tools</h4>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex">
+              <div class="skill-col">
+                <span class="skill-title">Tools</span>
                 <p>Git, VScode, Adobe Premiere, After Effects, Photoshop</p>
               </div>
             </div>
           </div>
-          <p class="hanko-font section-title">WORKS</p>
-          <div id="works" class="row">
-            <div class="col-6">comming soon...</div>
-            <div class="col-6">comming soon...</div>
-          </div>
-          <div class="row">
-            <div class="col-6">comming soon...</div>
-            <div class="col-6">comming soon...</div>
-          </div>
-          <p class="hanko-font section-title">EXPERIENCE</p>
-          <div id="experience" class="row">
-            <div class="col-12">
-              <p>Comming Soon..</p>
+
+
+
+
+          <div class="" id="works">
+            <p class="hanko-font section-title">WORKS</p>
+            <div class="row">
+              <div class="col-lg-6">comming soon...</div>
+              <div class="col-lg-6">comming soon...</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">comming soon...</div>
+              <div class="col-lg-6">comming soon...</div>
             </div>
           </div>
-          <div id="blog" class="row">
-            <div class="col-12">
-              <p class="hanko-font section-title">BLOG</p>
-              <a href="https://www.banakan.com/">バナナの缶詰</a>
+
+
+          <div id="experience">
+            <p class="hanko-font section-title">EXPERIENCE</p>
+            <div class="row">
+              <div class="col-12">
+                <p>Comming Soon..</p>
+              </div>
             </div>
           </div>
-          <p class="hanko-font section-title">CONTACT</p>
-          <div id="contact" class="row">
-            <div class="col-12 ">
-              <i class="far fa-envelope fa-5x fa-fw"></i>
-              <p>tachibanaa1211@gmail.com</p>
+
+          <div id="blog">
+            <div class="row">
+              <div class="col-12">
+                <p class="hanko-font section-title">BLOG</p>
+                <a href="https://www.banakan.com/">バナナの缶詰</a>
+              </div>
             </div>
           </div>
+          <div id="contact">
+            <p class="hanko-font section-title">CONTACT</p>
+            <div class="row">
+              <div class="col-12 ">
+                <i class="far fa-envelope fa-5x fa-fw"></i>
+                <p>tachibanaa1211@gmail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="github">
+            <p class="hanko-font section-title">GITHUB</p>
+            <div class="row mb-5">
+              <div class="col-12 ">
+                <!-- Prepare a container for your calendar. -->
+                <div class="calendar">
+                  <!-- Loading stuff -->
+                  Loading the data just for you.
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-
-    <footer class="pt-4 text-center">
+    <footer class="py-4 text-center">
       <p>COPYRIGHT &#169; Kan Tachibana's Portfolio ALL RIGHTS RESERVED.</p>
     </footer>
-    <script>
-      new Vue({
-        el: "#app",
-        data: {
-          windowHeight: window.innerHeight,
-          windowHeightPx: window.innerHeight + "px",
-          scrollY: 0
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        windowHeight: window.innerHeight,
+        windowHeightPx: window.innerHeight + "px",
+        scrollY: 0
+      },
+      mounted() {
+        window.addEventListener("resize", this.calculateWindowHeight);
+        console.log("add");
+        window.addEventListener("scroll", this.handleScroll);
+      },
+      beforeDestroy() {
+        window.removeEventListener("resize", this.calculateWindowHeight);
+        console.log("remove");
+      },
+      methods: {
+        calculateWindowHeight() {
+          this.windowHeight = window.innerHeight;
+          console.log(this.windowHeight);
         },
-        mounted() {
-          window.addEventListener("resize", this.calculateWindowHeight);
-          console.log("add");
-          window.addEventListener("scroll", this.handleScroll);
-        },
-        beforeDestroy() {
-          window.removeEventListener("resize", this.calculateWindowHeight);
-          console.log("remove");
-        },
-        methods: {
-          calculateWindowHeight() {
-            this.windowHeight = window.innerHeight;
-            console.log(this.windowHeight);
-          },
-          handleScroll() {
-            this.scrollY = window.scrollY;
-          }
+        handleScroll() {
+          this.scrollY = window.scrollY;
         }
-      });
-    </script>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      }
+    });
+  </script>
+
+  <!-- Include the library. -->
+  <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+
+  <script>
+    GitHubCalendar(".calendar", "standingflower0607", { responsive: true });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

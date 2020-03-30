@@ -7,23 +7,50 @@
   font-family: "dinosaur-font";
   src: url("../fonts/KR Nicky's Dinos.ttf");
 }
+body {
+  font-family: Arial, Helvetica, "ヒラギノ丸ゴ ProN W4", "ヒラギノ明朝 ProN W6",
+    sans-serif;
+}
 .top {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.skill-col {
+  border:6px solid #818181 ;
+  border-radius: 1rem;
+  margin: 0 0.5rem 3rem 0.5rem;
+  padding: 1rem; 
+  width: 100%;
+position: relative;
+}
+
+.skill-title{
+  position: absolute;
+  display: inline-block;
+    top: -1rem;
+    left: 1rem;
+ 
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 1.5rem;
+    background: #FFF;
+    color: #95ccff;
+    font-weight: bold;
 }
 footer {
   background-color: #818181;
 }
 
 #me {
-  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: azure;
+  border-radius: 50%;
 }
 
-#me img {
-  height: 100%;
-  width: auto;
-}
 
 .content {
   padding: 1rem;
@@ -44,6 +71,8 @@ footer {
 }
 .section-title {
   font-size: 3rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .sidenav {
