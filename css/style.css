@@ -17,13 +17,19 @@ body {
   align-items: center;
 }
 
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .skill-col {
   border:6px solid #818181 ;
   border-radius: 1rem;
   margin: 0 0.5rem 3rem 0.5rem;
   padding: 1rem; 
-  width: 100%;
-position: relative;
+  width : 40%;
+  position: relative;
 }
 
 .skill-title{
@@ -47,19 +53,34 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: azure;
+
   border-radius: 50%;
 }
-
+section{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
 
 .content {
   padding: 1rem;
   background-color: #fffaf0;
   margin: 0 auto;
 }
-#my-name {
+#my-name-top {
   font-family: hanko-font;
   font-size: 5rem;
+}
+#my-name{
+  margin: 2rem 0 3rem 0;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+#my-introduction{
+  margin-bottom: 1.5rem;
+}
+
+i{
+  color:gray;
 }
 
 .dinosaur-font {

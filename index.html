@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
 
   <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-  <script src="me_canvas.js"></script>
+  <script src="me-avatar.js"></script>
 
 
   <script>
@@ -67,152 +67,140 @@
 
 <body onload="init()">
   <div id="app">
-    <div class="container-fluid text-center">
-      <div class="sidenav text-left d-none d-xl-block" v-if="scrollY > Math.round(windowHeight/2)">
-        <a href="#profile" class="hanko-font">PROFILE</a>
-        <a href="#skills" class="hanko-font">SKILLS</a>
-        <a href="#works" class="hanko-font">WORKS</a>
-        <a href="#experience" class="hanko-font">EXPERIENCE</a>
-        <a href="#blog" class="hanko-font">BLOG</a>
-        <a href="#contact" class="hanko-font">CONTACT</a>
-        <a href="#github" class="hanko-font">GITHUB</a>
-        <a href="#" class="hanko-font"></a>
-      </div>
-
-      <div class="container">
-        <div v-bind:style="{height: windowHeightPx}" class="top">
-          <div class="hanko-font" id="my-name">Kan<br />Tachibana</div>
-        </div>
-        <p>{{ scrollY }}</p>
-
-        <div id="profile">
-          <p class="hanko-font section-title">PROFILE</p>
-          <div class="row text-center">
-            <div class="col-12">
-              <div id="me">
-                <div id="animation_container"
-                  style="background-color:rgba(255, 255, 255, 0.00); width:700px; height:400px">
-                  <canvas id="canvas" width="700" height="400"
-                    style="position: absolute; display: block; background-color:rgba(255, 255, 255, 0.00);"></canvas>
-                  <div id="dom_overlay_container"
-                    style="pointer-events:none; overflow:hidden; width:700px; height:400px; position: absolute; left: 0px; top: 0px; display: block;">
-                  </div>
-                </div>
-              </div>
 
 
-
-              <p>立花 冠 | Kan Tachibana</p>
-
-
-              <p>ロボットからWebまで、モノづくりが好きな高校生</p>
-              <div class="sns">
-                <a href=""><i class="fab fa-twitter fa-2x fa-fw"></i></a>
-                <a href=""><i class="fab fa-instagram fa-2x fa-fw"></i></a>
-                <a href=""><i class="fab fa-github fa-2x fa-fw"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-
-        <div id="skills">
-          <p class="hanko-font section-title">SKILLS</p>
-          <div　class="row">
-            <div class=" col-lg-6 d-flex">
-              <div class="skill-col">
-                <span class="skill-title">HTML / CSS</span>
-                <p>このサイトが作れるくらい。</p>
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex">
-              <div class="skill-col">
-                <span class="skill-title">Python</span>
-                <p>
-                  はじめて、さわった言語。RasphberryPiでロボット作ったり、PandasとかNumpy,Matplotlibらへん分かる。Djangoも少し。
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 d-flex">
-              <div class="skill-col">
-                <span class="skill-title">JavaScript</span>
-                <p>インターンで使ってる言語。Vue.jsとかもやってる。</p>
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex">
-              <div class="skill-col">
-                <span class="skill-title">Tools</span>
-                <p>Git, VScode, Adobe Premiere, After Effects, Photoshop</p>
-              </div>
-            </div>
-          </div>
-
-
-
-
-          <div class="" id="works">
-            <p class="hanko-font section-title">WORKS</p>
-            <div class="row">
-              <div class="col-lg-6">comming soon...</div>
-              <div class="col-lg-6">comming soon...</div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6">comming soon...</div>
-              <div class="col-lg-6">comming soon...</div>
-            </div>
-          </div>
-
-
-          <div id="experience">
-            <p class="hanko-font section-title">EXPERIENCE</p>
-            <div class="row">
-              <div class="col-12">
-                <p>Comming Soon..</p>
-              </div>
-            </div>
-          </div>
-
-          <div id="blog">
-            <div class="row">
-              <div class="col-12">
-                <p class="hanko-font section-title">BLOG</p>
-                <a href="https://www.banakan.com/">バナナの缶詰</a>
-              </div>
-            </div>
-          </div>
-          <div id="contact">
-            <p class="hanko-font section-title">CONTACT</p>
-            <div class="row">
-              <div class="col-12 ">
-                <i class="far fa-envelope fa-5x fa-fw"></i>
-                <p>tachibanaa1211@gmail.com</p>
-              </div>
-            </div>
-          </div>
-
-          <div id="github">
-            <p class="hanko-font section-title">GITHUB</p>
-            <div class="row mb-5">
-              <div class="col-12 ">
-                <!-- Prepare a container for your calendar. -->
-                <div class="calendar">
-                  <!-- Loading stuff -->
-                  Loading the data just for you.
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+    <div class="sidenav text-left d-none d-xl-block" v-if="scrollY > Math.round(windowHeight/2)">
+      <a href="#profile" class="hanko-font">PROFILE</a>
+      <a href="#skills" class="hanko-font">SKILLS</a>
+      <a href="#works" class="hanko-font">WHAT I DID</a>
+      <a href="#experience" class="hanko-font">EXPERIENCE</a>
+      <a href="#blog" class="hanko-font">BLOG</a>
+      <a href="#contact" class="hanko-font">CONTACT</a>
+      <a href="#github" class="hanko-font">GITHUB</a>
+      <a href="#" class="hanko-font"></a>
     </div>
+
+    <div class="container text-center">
+
+      <section v-bind:style="{height: windowHeightPx}" class="top">
+        <div class="hanko-font" id="my-name-top">Kan<br />Tachibana</div>
+      </section>
+
+      <section id="profile">
+
+        <p class="hanko-font section-title">PROFILE</p>
+
+        <p v-for="char in chars">{{ char }}</p>
+
+
+        <div id="me">
+          <div id="animation_container" style="background-color:rgba(255, 255, 255, 0.00); width:450px; height:258px">
+            <canvas id="canvas" width="450" height="258"
+              style="position: absolute; display: block; background-color:rgba(255, 255, 255, 0.00);"></canvas>
+            <div id="dom_overlay_container"
+              style="pointer-events:none; overflow:hidden; width:450px; height:258px; position: absolute; left: 0px; top: 0px; display: block;">
+            </div>
+          </div>
+        </div>
+
+        <div id="my-name">立花 冠 | Kan Tachibana</div>
+
+
+        <div id="my-introduction">ロボットからWebまで、モノづくりが好きな高校生</div>
+        <div class="sns">
+          <a href=""><i class="fab fa-twitter fa-2x fa-fw"></i></a>
+          <a href=""><i class="fab fa-instagram fa-2x fa-fw"></i></a>
+          <a href=""><i class="fab fa-github fa-2x fa-fw"></i></a>
+        </div>
+
+      </section>
+
+
+
+
+      <section id="skills">
+
+        <p class="hanko-font section-title">SKILLS</p>
+        <div　class="flex">
+
+          <div class="skill-col">
+            <span class="skill-title">HTML / CSS</span>
+            <p>このサイトが作れるくらい。</p>
+          </div>
+
+          <div class="skill-col">
+            <span class="skill-title">Python</span>
+            <p>
+              はじめて、さわった言語。RasphberryPiでロボット作ったり、PandasとかNumpy,Matplotlibらへん分かる。Djangoも少し。
+            </p>
+          </div>
+
+
+          <div class="skill-col">
+            <span class="skill-title">JavaScript</span>
+            <p>インターンで使ってる言語。Vue.jsとかもやってる。</p>
+          </div>
+
+          <div class="skill-col">
+            <span class="skill-title">Tools</span>
+            <p>Git, VScode, Adobe Premiere, After Effects, Photoshop</p>
+          </div>
+
+
+      </section>
+      <section id="works">
+        <p class="hanko-font section-title">WORKS</p>
+        <div class="flex">
+
+        </div>
+      </section>
+
+
+      <section id="experience">
+        <p class="hanko-font section-title">EXPERIENCE</p>
+
+        <div class="flex">
+          <a href="" class="work"><img src="./images/economi_syoujyou.jpg" alt="" class="thamnail"></a>
+          <a href="" class="work"><img src="./images/higeps_syoujyou.jpg" alt="" class="thamnail"></a>
+        </div>
+
+      </section>
+
+      <section id="blog">
+
+        <p class="hanko-font section-title">BLOG</p>
+        <a href="https://www.banakan.com/">バナナの缶詰</a>
+
+      </section>
+
+
+      <section id="contact">
+        <p class="hanko-font section-title">CONTACT</p>
+        <i class="far fa-envelope fa-5x fa-fw"></i>
+        <p>tachibanaa1211@gmail.com</p>
+      </section>
+
+      <div id="github">
+        <p class="hanko-font section-title">GITHUB</p>
+        <div class="row mb-5">
+          <div class="col-12 ">
+            <!-- Prepare a container for your calendar. -->
+            <div class="calendar">
+              <!-- Loading stuff -->
+              Loading the data just for you.
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
     <footer class="py-4 text-center">
       <p>COPYRIGHT &#169; Kan Tachibana's Portfolio ALL RIGHTS RESERVED.</p>
     </footer>
+
   </div>
 
   <script>
@@ -221,7 +209,8 @@
       data: {
         windowHeight: window.innerHeight,
         windowHeightPx: window.innerHeight + "px",
-        scrollY: 0
+        scrollY: 0,
+        chars: 'aiueo'
       },
       mounted() {
         window.addEventListener("resize", this.calculateWindowHeight);
@@ -239,6 +228,9 @@
         },
         handleScroll() {
           this.scrollY = window.scrollY;
+        },
+        randomColorSpan() {
+
         }
       }
     });

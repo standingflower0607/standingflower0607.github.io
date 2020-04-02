@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"me_canvas_atlas_", frames: [[807,515,160,38],[969,468,35,47],[946,354,66,112],[807,468,157,45],[969,517,35,47],[0,0,678,882],[680,0,159,176],[680,178,158,174],[680,594,253,33],[841,0,159,176],[840,178,158,174],[680,354,264,103],[680,459,125,133]]}
+		{name:"me_avatar_atlas_", frames: [[807,515,160,38],[969,468,35,47],[946,354,66,112],[807,468,157,45],[969,517,35,47],[0,0,678,882],[680,0,159,176],[680,178,158,174],[680,594,253,33],[841,0,159,176],[840,178,158,174],[680,354,264,103],[680,459,125,133]]}
 ];
 
 
@@ -12,91 +12,91 @@ lib.ssMetadata = [
 
 
 (lib.LeftEyebrow = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.LeftPupil = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Nose = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.RightEyebrow = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.RightPupil = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.facebackground = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.LeftBlink = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.LeftEyeball = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Neutral = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.RightBlink = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.RightEyeball = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Smile = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Surprised = function() {
-	this.initialize(ss["me_canvas_atlas_"]);
+	this.initialize(ss["me_avatar_atlas_"]);
 	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
@@ -441,24 +441,24 @@ p.nominalBounds = new cjs.Rectangle(621,74,1289,882);
 
 	// レイヤー_1
 	this.instance = new lib.Chadコピーpsd("synched",0);
-	this.instance.setTransform(340.35,199.6,0.4395,0.4395,0,0,0,959.6,514.5);
+	this.instance.setTransform(220.4,127,0.2769,0.2769,0,0,0,959.7,513.4);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(541.5,206,216.60000000000002,187.7);
+p.nominalBounds = new cjs.Rectangle(351.6,134.3,132,115.19999999999999);
 // library properties:
 lib.properties = {
 	id: '191F5F9BB917814D964F81865ED2CBEA',
-	width: 700,
-	height: 400,
+	width: 450,
+	height: 258,
 	fps: 24,
 	color: "#FFFFFF",
 	opacity: 0.00,
 	manifest: [
-		{src:"images/me_canvas_atlas_.png", id:"me_canvas_atlas_"}
+		{src:"images/me_avatar_atlas_.png", id:"me_avatar_atlas_"}
 	],
 	preloads: []
 };
